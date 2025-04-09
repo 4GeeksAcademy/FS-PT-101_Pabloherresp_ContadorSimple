@@ -1,17 +1,23 @@
 import React from "react";
 import Digit from "./Digit.jsx";
 
+const getDigit = (numero, posicion) => {
+	let divResto = 10 ** (posicion + 1)
+	let divCociente = 10 ** (posicion)
+	return Math.floor((numero % divResto) / divCociente)
+}
+
 const Home = (props) => {
 	let actual = props.value
 	return (
 		<div className="containter bg-secondary d-flex justify-content-center p-3">
 			<Digit value={<i className="fa-regular fa-clock"></i>}/>
-			<Digit value={Math.floor((actual%1000000)/100000)}/>
-			<Digit value={Math.floor((actual%100000)/10000)}/>
-			<Digit value={Math.floor((actual%10000)/1000)}/>
-			<Digit value={Math.floor((actual%1000)/100)}/>
-			<Digit value={Math.floor((actual%100)/10)}/>
-			<Digit value={actual%10}/>
+			<Digit value={getDigit(actual,5)}/>
+			<Digit value={getDigit(actual,4)}/>
+			<Digit value={getDigit(actual,3)}/>
+			<Digit value={getDigit(actual,2)}/>
+			<Digit value={getDigit(actual,1)}/>
+			<Digit value={getDigit(actual,0)}/>
 		</div>
 	);
 };
