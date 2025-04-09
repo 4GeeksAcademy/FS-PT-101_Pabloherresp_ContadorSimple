@@ -1,26 +1,17 @@
 import React from "react";
+import Digit from "./Digit.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
-const Home = () => {
+const Home = (props) => {
+	let actual = props.value
 	return (
-		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="containter bg-secondary d-flex justify-content-center p-3">
+			<Digit value={<i className="fa-regular fa-clock"></i>}/>
+			<Digit value={Math.floor((actual%1000000)/100000)}/>
+			<Digit value={Math.floor((actual%100000)/10000)}/>
+			<Digit value={Math.floor((actual%10000)/1000)}/>
+			<Digit value={Math.floor((actual%1000)/100)}/>
+			<Digit value={Math.floor((actual%100)/10)}/>
+			<Digit value={actual%10}/>
 		</div>
 	);
 };
